@@ -21,23 +21,28 @@ float comparerObj;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // set up the Values
     [self setValues];
 }
 - (IBAction)actionBtn:(id)sender {
+    // set up the values
     [self setValues];
 }
 -(float)calculateCelcius {
+    // conversion from Fahrenheit degrees to Celcius degrees
     float result;
     float degreesConverted = [self.fahrenheit.text floatValue];
     result = (degreesConverted - 32) *5.0/9.0;
     return result;
 }
 -(void) setValues {
+    // memory allocation
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
     [formatter setMaximumFractionDigits:1];
+    // retrieve celcius values from the calculateCelcius method
     NSString *celciusValue = [formatter stringFromNumber:[NSNumber numberWithFloat:self.calculateCelcius]];
     comparerObj = [[_fahrenheit text] floatValue];
+    // if else conditions
     if(comparerObj<50){
         [self.resultLbl setText:celciusValue];
         [self.warningLbl setText:(@"Put on a winter jacket.")];
